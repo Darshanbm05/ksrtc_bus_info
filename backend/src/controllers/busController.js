@@ -20,3 +20,31 @@ export const getBuses=async(req,res)=>{
         res.status(500).json({message:"Server error"});
     }
 };
+
+export const getPlaces=async(req,res)=>{
+    try{
+        const places=await Bus.aggregate([
+            {
+                $group:{
+                    _id:null,
+                    fromPlaces:{$addTOSet:"$from"},
+                    toPlaces:{$addToSet:"$to"}
+                }
+            }
+        ]);
+        if(!places.length){
+            return res.json([]);
+        }
+
+        const uniquePlaces=[
+            ...new Set([
+                ...places[0].fromPlaces,
+                ...places[0].toPlaces
+            ])
+        ];
+
+        res.json(uniquePlaces.sort());
+    }catch(err){
+        res.status(500).json({message:"Error fetching places"});
+    }
+};
