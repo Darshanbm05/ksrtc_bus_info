@@ -4,16 +4,16 @@ export const getBuses=async(req,res)=>{
     try{
         const{from,to}=req.query;
         
-        if(!from || !to){
+        if(!from){
             return res.status(400).json({
                 message:"from and to required"
             });
         }
-
-        const buses=await Bus.find({
-            from,
-            to
-        }).sort({departureTime:1});
+        let query={from};
+        if(to){
+            query.to=to;
+        }
+        const buses=await Bus.find(query).sort({departureTime:1});
 
         res.json(buses);
     }catch(err){
