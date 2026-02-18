@@ -27,7 +27,7 @@ export const getPlaces=async(req,res)=>{
             {
                 $group:{
                     _id:null,
-                    fromPlaces:{$addTOSet:"$from"},
+                    fromPlaces:{$addToSet:"$from"},
                     toPlaces:{$addToSet:"$to"}
                 }
             }
