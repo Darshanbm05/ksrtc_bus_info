@@ -1,13 +1,6 @@
 import Bus from "../models/bus.js";
 
 
-buses.sort((a, b) => {
-  const timeA = a.departureTime.split(":").join("");
-  const timeB = b.departureTime.split(":").join("");
-  return timeA - timeB;
-});
-
-
 export const getBuses=async(req,res)=>{
     try{
         const{from,to}=req.query;
@@ -21,7 +14,14 @@ export const getBuses=async(req,res)=>{
         if(to){
             query.to=to;
         }
-        const buses=await Bus.find(query).sort({departureTime:1});
+
+        const buses = await Bus.find(query);
+
+        buses.sort((a, b) => {
+        const timeA = a.departureTime.replace(":", "");
+        const timeB = b.departureTime.replace(":", "");
+        return timeA - timeB;
+        });
 
         res.json(buses);
     }catch(err){
