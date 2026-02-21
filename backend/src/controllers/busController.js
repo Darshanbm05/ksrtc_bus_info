@@ -1,5 +1,13 @@
 import Bus from "../models/bus.js";
 
+
+buses.sort((a, b) => {
+  const timeA = a.departureTime.split(":").join("");
+  const timeB = b.departureTime.split(":").join("");
+  return timeA - timeB;
+});
+
+
 export const getBuses=async(req,res)=>{
     try{
         const{from,to}=req.query;
@@ -48,3 +56,6 @@ export const getPlaces=async(req,res)=>{
         res.status(500).json({message:"Error fetching places"});
     }
 };
+
+const buses = await Bus.find(query);
+
