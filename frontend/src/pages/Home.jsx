@@ -73,7 +73,7 @@ function Home(){
 
                 </div>
 
-                <button type="submit">Search Route</button>
+                <button type="submit" className="primary-btn">Search Route</button>
             </form>
             </div>
 
@@ -92,6 +92,7 @@ function Home(){
             <br /><br />
 
             <button
+                className="primary-btn"
                 onClick={() => {
                 if (!from) {
                     alert("Select a place");
