@@ -38,79 +38,82 @@ function Home(){
 
     return (
         <div className="container">
-            <div className="header">
-            <h1>KSRTC Bus Info</h1>
-            <p>Search unreserved bus schedules</p>
-            </div>
+            <div className="header-row">
+                <div className='header'>
+                    <h1>KSRTC Bus Info</h1>
+                    <p>Search unreserved bus schedules</p>
+                </div>   
 
-            <div className="search-card">
-            <form onSubmit={handleSearch}>
-                <div className="form-row">
-
-                <div className="form-group">
-                    <label>From</label>
-                    <select value={from} onChange={(e) => setFrom(e.target.value)}>
-                    <option value="">Select source</option>
-                    {places.map((place) => (
-                        <option key={place} value={place}>
-                        {place}
-                        </option>
-                    ))}
-                    </select>
-                </div>
-
-                <div className="form-group">
-                    <label>To</label>
-                    <select value={to} onChange={(e) => setTo(e.target.value)}>
-                    <option value="">Select destination</option>
-                    {places.map((place) => (
-                        <option key={place} value={place}>
-                        {place}
-                        </option>
-                    ))}
-                    </select>
-                </div>
-
-                </div>
-
-                <button type="submit" className="primary-btn">Search Route</button>
-            </form>
-            </div>
-
-            <div className="search-card" style={{ marginTop: "20px" }}>
-            <h3>Search all buses from a place</h3>
-
-            <select value={from} onChange={(e) => setFrom(e.target.value)}>
-                <option value="">Select source</option>
-                {places.map((place) => (
-                <option key={place} value={place}>
-                    {place}
-                </option>
-                ))}
-            </select>
-
-            <br /><br />
-
-            <button
-                className="primary-btn"
-                onClick={() => {
-                if (!from) {
-                    alert("Select a place");
-                    return;
-                }
-                navigate(`/results?from=${from}`);
-                }}
-            >
-                Search From This Place
-            </button>
-            </div>
-            <div className="contribute-container">
                 <button
-                    className="contribute-btn"
+                    className="top-contribute-btn"
                     onClick={()=>navigate("/contribute")}
                 >
                     Contribute
                 </button>
+            </div>
+
+            <div className="search-card">
+                <form onSubmit={handleSearch}>
+                    <div className="form-row">
+
+                        <div className="form-group">
+                            <label>From</label>
+                            <select value={from} onChange={(e) => setFrom(e.target.value)}>
+                            <option value="">Select source</option>
+                            {places.map((place) => (
+                                <option key={place} value={place}>
+                                {place}
+                                </option>
+                            ))}
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label>To</label>
+                            <select value={to} onChange={(e) => setTo(e.target.value)}>
+                            <option value="">Select destination</option>
+                            {places.map((place) => (
+                                <option key={place} value={place}>
+                                {place}
+                                </option>
+                            ))}
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div className='button-center'>
+                        <button type="submit" className="primary-btn">Find Buses</button>
+                    </div>
+                </form>
+            </div>
+
+            <div className="search-card">
+                <h3>Search all buses from a place</h3>
+
+                    <select value={from} onChange={(e) => setFrom(e.target.value)}>
+                        <option value="">Select source</option>
+                        {places.map((place) => (
+                        <option key={place} value={place}>
+                            {place}
+                        </option>
+                        ))}
+                    </select>
+
+                    <br /><br />
+
+                    <button
+                        className="primary-btn"
+                        onClick={() => {
+                        if (!from) {
+                            alert("Select a place");
+                            return;
+                        }
+                        navigate(`/results?from=${from}`);
+                        }}
+                    >
+                        Find Buses
+                    </button>
             </div>
         </div>
     );

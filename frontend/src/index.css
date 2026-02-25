@@ -4,9 +4,9 @@ body{
     background: linear-gradient(to right,#f8f9fa,#eef2f7);
 }
 
-.conatainer{
-    max-width: 900px;
-    margin: auto;
+.container{
+    max-width: 720px;
+    margin:60px auto;
     padding:40px 20px;
 }
 
@@ -14,6 +14,28 @@ body{
     color: #6c757d;
     margin-top:5px;
 }
+
+.header-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-contribute-btn{
+    padding:8px 16px;
+    border-radius:8px;
+    background: #ff9800;
+    color:white;
+    border:none;
+    font-weight: 600;
+    cursor:pointer;
+    transition: 0.2s ease;
+}
+
+.top-contribute-btn:hover{
+    background: #e68900;
+}
+
 
 .header h1{
     margin:0;
@@ -32,7 +54,7 @@ body{
     padding:20px;
     margin-bottom: 20px;
     border-radius: 12px;
-    box-shadow: 0 6px 18px rqba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .form-row{
@@ -76,18 +98,21 @@ button:hover{
     background: #004c99;
 }
 
+.button-center{
+    text-align: left;
+    margin-top: 10px;
+}
 
 .primary-btn{
-    width:100%;
-    padding:14px;
+    padding:14px 26px;
     border-radius:10px;
-    background: #0066cc;
+    background:#0066cc;
     color:white;
-    font-weight: 600;
+    font-weight:600;
     font-size:16px;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0,102,204,0.3);
-    transition: 0.2 ease;
+    border:none;
+    box-shadow:0 4px 12px rgba(0,102,204,0.3);
+    transition:0.2s ease;
 }
 
 .primary-btn:hover{
@@ -217,7 +242,7 @@ textarea{
 
 @media(max-width:600px){
 
-    .conatainer{
+    .container{
         padding: 20px 16px;
     }
 
@@ -235,6 +260,9 @@ textarea{
         width: 100%;
     }
 
+    .primary-btn{
+        width:100%;
+    }
     .contributer-container{
         padding: 15px;
     }
