@@ -8,7 +8,7 @@ function Results() {
   const [error, setError] = useState("");
 
   const params = new URLSearchParams(location.search);
-  const from = params.get("from");
+  const busStand = params.get("busStand");
   const to = params.get("to");
 
 
@@ -20,7 +20,7 @@ function Results() {
   useEffect(() => {
     const fetchBuses = async () => {
       try {
-        let url = `${import.meta.env.VITE_API_URL}/api/buses?from=${from}`;
+        let url = `${import.meta.env.VITE_API_URL}/api/buses?busStand=${busStand}`;
 
         if (to) {
           url += `&to=${to}`;
@@ -42,7 +42,7 @@ function Results() {
     };
 
     fetchBuses();
-  }, [from, to]);
+  }, [busStand, to]);
 
 
   return (
@@ -54,8 +54,8 @@ function Results() {
 
       <h2 style={{ marginTop: "20px" }}>
         {to
-          ? `Results for ${from} → ${to}`
-          : `All buses from ${from}`}
+          ? `Results for ${busStand} `
+          : `All buses from ${busStand}`}
       </h2>
 
       {loading && <p>Loading...</p>}

@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {useEffect} from "react";
 
 function Home(){
-    const[from,setFrom]=useState("");
+    const[busStand,setBusStand]=useState("");
     const[to,setTo]=useState("");
     const navigate=useNavigate();
     const [places, setPlaces]=useState([]);
@@ -23,17 +23,17 @@ function Home(){
 
     const handleSearch=(e)=>{
         e.preventDefault();
-        if(!from || !to){
+        if(!busStand || !to){
             alert("Both From and To are required");
             return;
         }
 
-        if(from===to){
+        if(busStand===to){
             alert("From and To cannot br the same");
             return;
         }
 
-        navigate(`/results?from=${from}&to=${to}`);
+        navigate(`/results?busStand=${busStand}&to=${to}`);
     };
 
     return (
@@ -58,7 +58,7 @@ function Home(){
 
                         <div className="form-group">
                             <label>From</label>
-                            <select value={from} onChange={(e) => setFrom(e.target.value)}>
+                            <select value={busStand} onChange={(e) => setBusStand(e.target.value)}>
                             <option value="">Select source</option>
                             {places.map((place) => (
                                 <option key={place} value={place}>
@@ -91,7 +91,7 @@ function Home(){
             <div className="search-card">
                 <h3>Search all buses from a place</h3>
 
-                    <select value={from} onChange={(e) => setFrom(e.target.value)}>
+                    <select value={busStand} onChange={(e) => setBusStand(e.target.value)}>
                         <option value="">Select source</option>
                         {places.map((place) => (
                         <option key={place} value={place}>
@@ -105,11 +105,11 @@ function Home(){
                     <button
                         className="primary-btn"
                         onClick={() => {
-                        if (!from) {
+                        if (!busStand) {
                             alert("Select a place");
                             return;
                         }
-                        navigate(`/results?from=${from}`);
+                        navigate(`/results?busStand=${busStand}`);
                         }}
                     >
                         Find Buses

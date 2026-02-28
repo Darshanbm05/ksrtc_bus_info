@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 function Contribute(){
     const [formData, setFormData]=useState({
+        busStand:"",
         from:"",
         to:"",
         departureTime:"",
@@ -38,6 +39,7 @@ function Contribute(){
         if(response.ok){
             alert("Contribution submitted successfully");
             setFormData({
+                busStand:"",
                 from:"",
                 to:"",
                 departureTime:"",
@@ -60,6 +62,17 @@ function Contribute(){
 
         
                     <form onSubmit={handleSubmit}>
+
+                        <div className="form-group">
+                            <label>Bus Stand</label>
+                            <input type="text" 
+                            name="busStand"
+                            value={formData.busStand}
+                            onChange={handleChange}
+                            required
+                            />
+                        </div>
+
 
                         <div className="form-group">
                             <label>From</label>
