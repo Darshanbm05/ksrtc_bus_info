@@ -71,6 +71,8 @@ MongoDB Atlas
 
 ## 📂 Project Structure
 
+
+```bash
 KSRTC-Bus-Info/
 │
 ├── backend/
@@ -90,6 +92,7 @@ KSRTC-Bus-Info/
 │
 └── README.md
 
+```
 
 ---
 
@@ -98,7 +101,7 @@ KSRTC-Bus-Info/
 ### Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Darshanbm05/ksrtc_bus_info
 cd KSRTC-Bus-Info
 ```
 
