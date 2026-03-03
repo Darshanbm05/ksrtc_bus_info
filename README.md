@@ -55,12 +55,14 @@ This project converts static schedule data into a dynamic and searchable web app
 ---
 
 ## 🏗 Architecture
+
+```bash
 Frontend (React)
 ↓
 REST API (Express)
 ↓
 MongoDB Atlas
-
+```
 
 - Frontend communicates with backend via REST APIs.
 - Backend handles data querying, filtering, and validation.
