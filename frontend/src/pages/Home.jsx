@@ -2,6 +2,8 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useEffect} from "react";
 
+import Select from "react-select";
+
 function Home(){
     const[busStand,setBusStand]=useState("");
     const[to,setTo]=useState("");
@@ -36,6 +38,11 @@ function Home(){
         navigate(`/results?busStand=${busStand}&to=${to}`);
     };
 
+
+    const placeOptions = places.map(place => ({
+            value: place,
+            label: place
+        }));
     return (
         <div className="container">
             <div className="header-row">
@@ -58,26 +65,24 @@ function Home(){
 
                         <div className="form-group">
                             <label>From</label>
-                            <select value={busStand} onChange={(e) => setBusStand(e.target.value)}>
-                            <option value="">Select source</option>
-                            {places.map((place) => (
-                                <option key={place} value={place}>
-                                {place}
-                                </option>
-                            ))}
-                            </select>
+                            <Select
+                                options={placeOptions}
+                                value={placeOptions.find(p => p.value === busStand)}
+                                onChange={(selected) => setBusStand(selected.value)}
+                                placeholder="Select From"
+                                isSearchable
+                            />
                         </div>
 
                         <div className="form-group">
                             <label>To</label>
-                            <select value={to} onChange={(e) => setTo(e.target.value)}>
-                            <option value="">Select destination</option>
-                            {places.map((place) => (
-                                <option key={place} value={place}>
-                                {place}
-                                </option>
-                            ))}
-                            </select>
+                            <Select
+                                options={placeOptions}
+                                value={placeOptions.find(p => p.value === to)}
+                                onChange={(selected) => setTo(selected.value)}
+                                placeholder="Select destination"
+                                isSearchable
+                            />
                         </div>
 
                     </div>
@@ -90,15 +95,19 @@ function Home(){
 
             <div className="search-card">
                 <h3>Search all buses from a place</h3>
-
-                    <select value={busStand} onChange={(e) => setBusStand(e.target.value)}>
-                        <option value="">Select source</option>
-                        {places.map((place) => (
-                        <option key={place} value={place}>
-                            {place}
-                        </option>
-                        ))}
-                    </select>
+                                <Select
+                                    options={placeOptions}
+                                    value={placeOptions.find(p=>p.value===busStand)}
+                                    onChange={(selected)=>setBusStand(selected.value)}
+                                    placeholder="Select From"
+                                    isSearchable
+                                    styles={{
+                                        container: (base) => ({
+                                        ...base,
+                                        width: "300px"
+                                        })
+                                    }}
+                                />
 
                     <br /><br />
 
