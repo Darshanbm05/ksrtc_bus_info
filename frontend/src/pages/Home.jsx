@@ -9,6 +9,7 @@ function Home(){
     const[to,setTo]=useState("");
     const navigate=useNavigate();
     const [places, setPlaces]=useState([]);
+    const [fromPlaces, setFromPlaces]=useState([]);
 
 
      useEffect(()=>{
@@ -20,6 +21,14 @@ function Home(){
                 setPlaces(data);
             };
 
+            const fetchFromPlaces=async()=>{
+                const res=await fetch(
+                    `${import.meta.env.VITE_API_URL}/api/buses/from`
+                );
+                const data=await res.json();
+                setFromPlaces(data);
+            }
+            fetchFromPlaces();
             fetchPlaces();
     },[]);
 
@@ -40,6 +49,11 @@ function Home(){
 
 
     const placeOptions = places.map(place => ({
+            value: place,
+            label: place
+        }));
+
+        const fromOptions = fromPlaces.map(place => ({
             value: place,
             label: place
         }));
@@ -66,8 +80,8 @@ function Home(){
                         <div className="form-group">
                             <label>From</label>
                             <Select
-                                options={placeOptions}
-                                value={placeOptions.find(p => p.value === busStand)}
+                                options={fromOptions}
+                                value={fromOptions.find(p => p.value === busStand)}
                                 onChange={(selected) => setBusStand(selected.value)}
                                 placeholder="Select From"
                                 isSearchable
@@ -98,8 +112,8 @@ function Home(){
                 <h3>Search all buses from a place</h3>
                                 <Select
                                     className="place-select"
-                                    options={placeOptions}
-                                    value={placeOptions.find(p=>p.value===busStand)}
+                                    options={fromOptions}
+                                    value={fromOptions.find(p=>p.value===busStand)}
                                     onChange={(selected)=>setBusStand(selected.value)}
                                     placeholder="Select From"
                                     isSearchable
