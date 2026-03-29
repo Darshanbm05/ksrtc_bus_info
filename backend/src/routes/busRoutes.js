@@ -1,5 +1,5 @@
 import express from "express";
-import {getBuses,getPlaces} from "../controllers/busController.js";
+import {getBuses,getPlaces,getFrom} from "../controllers/busController.js";
 
 const router=express.Router();
 
