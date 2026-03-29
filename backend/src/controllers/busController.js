@@ -59,3 +59,16 @@ export const getPlaces=async(req,res)=>{
     }
 };
 
+export const getFrom=async(req,res)=>{
+    try{
+        const fromPlaces=await Bus.distinct("busStand");
+
+        if(!fromPlaces.length){
+            return res.json([]);
+        }
+        res.json(fromPlaces.sort());
+    }catch(err){
+        res.status(500).json({message:"Error fetching places"});
+    }
+}
+
