@@ -56,7 +56,7 @@ function Contribute(){
 
     return(
         <div className="contributer-container">
-            <Link to="/">Back to Home</Link>
+            <Link to="/" className="back-btn">Back to Home</Link>
             <div className="contribute-card">
                 <h2>Contribute</h2>
 
