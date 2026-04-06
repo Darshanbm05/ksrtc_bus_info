@@ -135,8 +135,7 @@ function Contribute(){
                 <div className="contact-section">
                     <h4>Conatact Us</h4>
                     <div className="contact-box">
-                        <p>Email: your-eamil@example.com</p>
-                        <p>Phone:+91-xxxxxxxxxx</p>
+                        <p>Email: darshubm044@gmail.com</p>
                     </div>
                 </div>
 
